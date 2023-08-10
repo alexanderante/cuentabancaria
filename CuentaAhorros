@@ -1,0 +1,42 @@
+
+class CuentaAhorros {
+    private cuentaActiva: boolean;
+
+    constructor(saldoInicial: number, tasaAnual: number) {
+        this.cuentaActiva = saldoInicial >= 10000;
+    
+    }
+    consignar(cantidad: number): void {
+        if (this.cuentaActiva) {
+            super.consignar(cantidad);
+        } else {
+            console.log("Cuenta inactiva, no se puede consignar.");
+        }
+    }
+
+    retirar(cantidad: number): void {
+        if (this.cuentaActiva) {
+            super.retirar(cantidad);
+        } else {
+            console.log("Cuenta inactiva, no se puede retirar.");
+        }
+    }
+
+    extractoMensual(): void {
+        if (this.numeroRetiros > 4) {
+            this.comisionMensual += (this.numeroRetiros - 4) * 1000;
+        }
+        super.extractoMensual();
+        this.cuentaActiva = this.saldo >= 10000;
+    }
+
+    imprimir(): void {
+        super.imprimir();
+        console.log("Comisión mensual:", this.comisionMensual);
+        console.log("Número de transacciones:", this.numeroConsignaciones + this.numeroRetiros);
+        console.log("Cuenta activa:", this.cuentaActiva);
+    }
+
+   
+}
+
