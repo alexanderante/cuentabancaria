@@ -1,8 +1,9 @@
 
-class CuentaAhorros {
+class CuentaAhorros extends Cuenta {
     private cuentaActiva: boolean;
 
     constructor(saldoInicial: number, tasaAnual: number) {
+        super(saldoInicial, tasaAnual);
         this.cuentaActiva = saldoInicial >= 10000;
     
     }
